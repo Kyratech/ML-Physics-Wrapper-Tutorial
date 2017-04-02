@@ -3,7 +3,7 @@
 
 #include "Tester.h"
 #include <iostream>
-#include <include\TinyOBJLoader\tiny_obj_loader.h>
+#include <TinyOBJLoader\tiny_obj_loader.h>
 
 /*
  * Use the TinyOBJLoader packaged in the wrapper library to load a triangle mesh

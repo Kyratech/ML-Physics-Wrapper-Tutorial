@@ -3,8 +3,8 @@
 
 #include <GL/glew.h>
 
-#include <include/glm/glm.hpp>
-#include <include/glm/gtc/matrix_transform.hpp>
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 
 enum Camera_Directions
 {

@@ -2,14 +2,13 @@
 #define PHYSICS_OBJECT_H
 
 //GLM - Maths for openGL
-#include <include/glm/glm.hpp>
-#include <include/glm/gtx/quaternion.hpp>
-#include <include/glm/gtc/matrix_transform.hpp>
-#include <include/glm/gtc/type_ptr.hpp>
+#include <glm/glm.hpp>
+#include <glm/gtx/quaternion.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 //Physics
-//#include "btBulletDynamicsCommon.h"
-#include <include/PhysicsObject.h>
+#include <PhysicsObject.h>
 
 //Other
 #include "mesh.h"

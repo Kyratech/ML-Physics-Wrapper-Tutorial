@@ -1,7 +1,7 @@
 
 #include "../include/utils.h"
 
-#include <include/PhysicsWorld.h>
+#include <PhysicsWorld.h>
 
 //GUI
 #include "../include/ImGUI/imgui.h"
@@ -138,9 +138,7 @@ int updateApp(std::vector<GameObject> *physicsObjects, PhysicsWorld* world)
     ImGui_ImplGlfwGL3_NewFrame();
 
     ImGui::SetNextWindowSize(ImVec2(200, 100), ImGuiSetCond_FirstUseEver);
-    ImGui::Begin("GUI Window", &show_guiWindow);
-
-    ImGui::Text("Hello, world!");
+    ImGui::Begin("Control Panel", &show_guiWindow);
 
     ImGui::Checkbox("Run simulation", &simulationRunning);
 

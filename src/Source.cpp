@@ -2,10 +2,10 @@
 #include "../include/utils.h"
 
 //Physics
-#include <include/PhysicsObjectTypes.h>
-#include <include/PhysicsWorld.h>
-#include <include/HeightfieldData.h>
-#include <include/GravityObject.h>
+#include <PhysicsObjectTypes.h>
+#include <PhysicsWorld.h>
+#include <HeightfieldData.h>
+#include <GravityObject.h>
 
 void callbackStartTest(PhysicsCollision collision);
 
