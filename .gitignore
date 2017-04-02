@@ -42,5 +42,5 @@
 *.vcxproj*
 
 #Specific files not part of the project
-include/*
+include/include/*
 lib/*
