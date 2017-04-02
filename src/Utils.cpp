@@ -83,7 +83,7 @@ int startApp()
 		return -1;
 	}
 
-	//Thingy to ficus on this window
+	//Thingy to focus on this window
 	glfwMakeContextCurrent(window);
 
 	//Set the required callback functions
@@ -92,7 +92,7 @@ int startApp()
 	glfwSetScrollCallback(window, scroll_callback);
 	glfwSetMouseButtonCallback(window, mouse_button_callback);
 
-	//Use modern techniquies to manage OpenGL functionality
+	//Use modern techniques to manage OpenGL functionality
 	glewExperimental = GL_TRUE;
 	//Exit if GLEW broke
 	if (glewInit() != GLEW_OK)
@@ -101,9 +101,7 @@ int startApp()
 		return -1;
 	}
 
-	/*Tell openGL what size the viewport is going to be, and where 0,0 is at (lower-left)
-	*Location is on the axis (-1 <= x <= 1, -1 <= y <= 1), so we basically
-	*map from (-1, 1) to (0, 800) and (0, 600)*/
+	/*Tell openGL what size the viewport is going to be, and where 0,0 is at (lower-left)*/
 	glViewport(0, 0, WIDTH, HEIGHT);
 
 	//Turn on depth testing

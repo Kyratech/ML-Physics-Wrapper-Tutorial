@@ -23,6 +23,10 @@ extern bool simulationRunning;
 //GLFW Window
 extern GLFWwindow *window;
 
+//Time elapsed since last window update
+//Use in world->stepworld() to get framerate independence
+extern GLfloat deltaTime;
+
 int startApp();
 int updateApp(std::vector<GameObject> *physicsObjects, PhysicsWorld* world);
 int lateUpdateApp(std::vector<GameObject> *physicsObjects, PhysicsWorld* world);

@@ -58,7 +58,7 @@ int main()
 
 		//60 simulation steps per second
 		if(simulationRunning)
-			world->stepWorld(1 / 60.0f);
+			world->stepWorld(deltaTime);
 
 		lateUpdateApp(&physicsObjects, world);
 	}
