@@ -7,10 +7,6 @@
 #include <HeightfieldData.h>
 #include <GravityObject.h>
 
-void callbackStartTest(PhysicsCollision collision);
-
-PhysicsBox* bigBox;
-
 int main()
 {
     //Set up the opengl drawing environment + window
@@ -26,22 +22,21 @@ int main()
 
 	PhysicsWorld* world = new PhysicsWorld(1.0f, false);
 
+	//========================//
+	//Add some physics objects//
+	//========================//
+
 	std::vector<GameObject> physicsObjects;
 
-	bigBox = new PhysicsBox(world);
-
-	bigBox->setCollisionID(1);
-	Mesh bigBoxMesh(getCubeVertices(1.0), getCubeIndices(), glm::vec4(1.0f, 0.3f, 0.0f, 1.0f));
-	GameObject bigBoxObject(&bigBoxMesh, glm::vec3(0.0f, 0.0f, 0.0f), bigBox);
-	physicsObjects.push_back(bigBoxObject);
+	PhysicsBox defaultBox(world);
+	Mesh boxMesh(getCubeVertices(1.0), getCubeIndices(), glm::vec4(1.0f, 0.3f, 0.0f, 1.0f));
+	GameObject boxObject(&boxMesh, glm::vec3(0.0f, 0.0f, 0.0f), &defaultBox);
+	physicsObjects.push_back(boxObject);
 
 	PhysicsPlane defaultPlane(world);
-	defaultPlane.setCollisionID(2);
 	Mesh planeMesh(getXZPlaneVertices(20.0f), getPlaneIndices(), glm::vec4(0.8f, 0.8f, 0.8f, 1.0f));
 	GameObject planeObject(&planeMesh, glm::vec3(0.0f, 0.0f, 0.0f), &defaultPlane);
 	physicsObjects.push_back(planeObject);
-
-	world->setCollisionStartFunction(callbackStartTest);
 
 	//===============//
 	//Simulation loop//
@@ -50,33 +45,28 @@ int main()
 	/*Game loop keeps running so that the window doesn't just quit.*/
 	while (!glfwWindowShouldClose(window))
 	{
+	    //Does openGL stuff at the start of the loop
         updateApp(&physicsObjects, world);
 
 		//================//
 		// Run simulation //
 		//================//
 
-		//60 simulation steps per second
 		if(simulationRunning)
 			world->stepWorld(deltaTime);
 
+        //Does openGL stuff at the end of the loop
 		lateUpdateApp(&physicsObjects, world);
 	}
 
+	//========================//
+	//Clean up after ourselves//
+	//========================//
+
 	delete world;
 
+	//OpenGL cleanup
 	endApp();
 
 	return 0;
 }
-
-
-void callbackStartTest(PhysicsCollision collision)
-{
-	//Collision between box and ground
-	if (collision.contains(1, 2))
-	{
-		bigBox->applyImpulse(collision.getNormal() * 30.0f);
-	}
-}
-
