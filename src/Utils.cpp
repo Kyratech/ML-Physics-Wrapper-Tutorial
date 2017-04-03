@@ -18,8 +18,8 @@ void mouse_movement(GLFWwindow *window, double xPos, double yPos);
 void mouse_button_callback(GLFWwindow* window, int button, int action, int mods);
 void scroll_callback(GLFWwindow* window, double xpos, double ypos);
 
-const GLuint WIDTH = 1400;
-const GLuint HEIGHT = 800;
+const GLuint WIDTH = 800;
+const GLuint HEIGHT = 450;
 
 GLFWwindow *window;
 

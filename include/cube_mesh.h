@@ -16,61 +16,63 @@
 	|  /		|  /
 	| /			| /
 	|/__________|/
-		
+
 */
-static std::vector<struct Vertex> getCubeVertices(float sideLength)
+static std::vector<struct Vertex> getBoxVertices(float width, float height, float depth)
 {
 	//Centred around local (0,0), the vertices have xyz locations at +/- half the side length
-	float halfSide = sideLength / 2.0;
+	float halfWidth = width / 2.0;
+	float halfHeight = height / 2.0;
+	float halfDepth = depth / 2.0;
 
-	std::vector<struct Vertex> cubeVerts = {
+	std::vector<struct Vertex> boxVerts = {
 		//Front
-		{{-halfSide,	-halfSide,	-halfSide},	{0.0f, 0.0f, -1.0f}},	//Front bottom left
-		{{halfSide,		-halfSide,	-halfSide},	{0.0f, 0.0f, -1.0f}},	//Front bottom right
-		{{halfSide,		halfSide,	-halfSide},	{0.0f, 0.0f, -1.0f}},	//Front top right
-		{{-halfSide,	halfSide,	-halfSide},	{0.0f, 0.0f, -1.0f}},	//Front top left
+		{{-halfWidth,	-halfHeight,	-halfDepth},	{0.0f, 0.0f, -1.0f}},	//Front bottom left
+		{{halfWidth,    -halfHeight,	-halfDepth},	{0.0f, 0.0f, -1.0f}},	//Front bottom right
+		{{halfWidth,    halfHeight,	    -halfDepth},	{0.0f, 0.0f, -1.0f}},	//Front top right
+		{{-halfWidth,	halfHeight,	    -halfDepth},	{0.0f, 0.0f, -1.0f}},	//Front top left
 
 		//Right
-		{{halfSide,	-halfSide,	-halfSide},	{1.0f, 0.0f, 0.0f}},	//Front bottom right
-		{{halfSide,	halfSide,	-halfSide},	{1.0f, 0.0f, 0.0f}},	//Front top right
-		{{halfSide,	halfSide,	halfSide},	{1.0f, 0.0f, 0.0f}},	//Back top right
-		{{halfSide,	-halfSide,	halfSide},	{1.0f, 0.0f, 0.0f}},	//Back bottom right
+		{{halfWidth,	-halfHeight,	-halfDepth},	{1.0f, 0.0f, 0.0f}},	//Front bottom right
+		{{halfWidth,	halfHeight,	    -halfDepth},	{1.0f, 0.0f, 0.0f}},	//Front top right
+		{{halfWidth,	halfHeight,	    halfDepth},	    {1.0f, 0.0f, 0.0f}},	//Back top right
+		{{halfWidth,	-halfHeight,	halfDepth},	    {1.0f, 0.0f, 0.0f}},	//Back bottom right
 
 		//Back
-		{{-halfSide,	-halfSide,	halfSide},	{0.0f, 0.0f, 1.0f}},	//Back bottom left
-		{{halfSide,		-halfSide,	halfSide},	{0.0f, 0.0f, 1.0f}},	//Back bottom right
-		{{halfSide,		halfSide,	halfSide},	{0.0f, 0.0f, 1.0f} },	//Back top right
-		{{-halfSide,	halfSide,	halfSide},	{0.0f, 0.0f, 1.0f}},	//Back top left
+		{{-halfWidth,	-halfHeight,	halfDepth},	    {0.0f, 0.0f, 1.0f}},	//Back bottom left
+		{{halfWidth,	-halfHeight,	halfDepth},	    {0.0f, 0.0f, 1.0f}},	//Back bottom right
+		{{halfWidth,	halfHeight,	    halfDepth},	    {0.0f, 0.0f, 1.0f} },	//Back top right
+		{{-halfWidth,	halfHeight,	    halfDepth},	    {0.0f, 0.0f, 1.0f}},	//Back top left
 
 		//Left
-		{{-halfSide,	-halfSide,	-halfSide},	{-1.0f, 0.0f, 0.0f}},	//Front bottom left
-		{{-halfSide,	-halfSide,	halfSide},	{-1.0f, 0.0f, 0.0f}},	//Back bottom left
-		{{-halfSide,	halfSide,	-halfSide},	{-1.0f, 0.0f, 0.0f}},	//Front top left
-		{{-halfSide,	halfSide,	halfSide},	{-1.0f, 0.0f, 0.0f}},	//Back top left
-		
+		{{-halfWidth,	-halfHeight,	-halfDepth},	{-1.0f, 0.0f, 0.0f}},	//Front bottom left
+		{{-halfWidth,	-halfHeight,	halfDepth},	    {-1.0f, 0.0f, 0.0f}},	//Back bottom left
+		{{-halfWidth,	halfHeight,	    -halfDepth},	{-1.0f, 0.0f, 0.0f}},	//Front top left
+		{{-halfWidth,	halfHeight,	    halfDepth},	    {-1.0f, 0.0f, 0.0f}},	//Back top left
+
 		//Bottom
-		{{-halfSide,	-halfSide,	-halfSide},	{0.0f, -1.0f, 0.0f}},	//Front bottom left
-		{{halfSide,		-halfSide,	-halfSide},	{0.0f, -1.0f, 0.0f}},	//Front bottom right
-		{{-halfSide,	-halfSide,	halfSide},	{0.0f, -1.0f, 0.0f}},	//Back bottom left
-		{{halfSide,		-halfSide,	halfSide},	{0.0f, -1.0f, 0.0f}},	//Back bottom right
-		
+		{{-halfWidth,	-halfHeight,	-halfDepth},	{0.0f, -1.0f, 0.0f}},	//Front bottom left
+		{{halfWidth,	-halfHeight,	-halfDepth},	{0.0f, -1.0f, 0.0f}},	//Front bottom right
+		{{-halfWidth,	-halfHeight,	halfDepth},	    {0.0f, -1.0f, 0.0f}},	//Back bottom left
+		{{halfWidth,	-halfHeight,	halfDepth},	    {0.0f, -1.0f, 0.0f}},	//Back bottom right
+
 		//Top
-		{{halfSide,		halfSide,	-halfSide},	{0.0f, 1.0f, 0.0f}},	//Front top right
-		{{-halfSide,	halfSide,	-halfSide},	{0.0f, 1.0f, 0.0f}},	//Front top left	
-		{{halfSide,		halfSide,	halfSide},	{0.0f, 1.0f, 0.0f}},	//Back top right
-		{{-halfSide,	halfSide,	halfSide},	{0.0f, 1.0f, 0.0f}}	//Back top left
+		{{halfWidth,	halfHeight,	    -halfDepth},	{0.0f, 1.0f, 0.0f}},	//Front top right
+		{{-halfWidth,	halfHeight,	    -halfDepth},	{0.0f, 1.0f, 0.0f}},	//Front top left
+		{{halfWidth,	halfHeight,	    halfDepth},	    {0.0f, 1.0f, 0.0f}},	//Back top right
+		{{-halfWidth,	halfHeight,	    halfDepth},	    {0.0f, 1.0f, 0.0f}}	    //Back top left
 	};
 
-	return cubeVerts;
+	return boxVerts;
 }
 
 /*
 * Produces list of indices for OpenGL to construct a cube from the above vertex locations
 * Note that this implementation depends on the order of vertices above
 */
-static std::vector<GLuint> getCubeIndices()
+static std::vector<GLuint> getBoxIndices()
 {
-	std::vector<GLuint> cubeInds = {
+	std::vector<GLuint> boxInds = {
 		0, 1, 2,
 		0, 2, 3,	//Front
 		4, 5, 6,
@@ -85,7 +87,7 @@ static std::vector<GLuint> getCubeIndices()
 		20, 22, 23	//Top
 	};
 
-	return cubeInds;
+	return boxInds;
 }
 
 #endif

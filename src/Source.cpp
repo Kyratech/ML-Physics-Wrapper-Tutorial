@@ -20,19 +20,23 @@ int main()
 	//Set up the physics engine//
 	//=========================//
 
+	//
 	PhysicsWorld* world = new PhysicsWorld(1.0f, false);
 
 	//========================//
 	//Add some physics objects//
 	//========================//
 
+	//Add your objects to this vector to get them drawn and reset
 	std::vector<GameObject> physicsObjects;
 
+	//Create a unit cube directly above the origin of the world
 	PhysicsBox defaultBox(world);
-	Mesh boxMesh(getCubeVertices(1.0), getCubeIndices(), glm::vec4(1.0f, 0.3f, 0.0f, 1.0f));
+	Mesh boxMesh(getBoxVertices(5.0, 1.0, 2.0), getBoxIndices(), glm::vec4(1.0f, 0.3f, 0.0f, 1.0f));
 	GameObject boxObject(&boxMesh, glm::vec3(0.0f, 0.0f, 0.0f), &defaultBox);
 	physicsObjects.push_back(boxObject);
 
+	//Create an infinite plane in the XZ plane, passing through the world origin
 	PhysicsPlane defaultPlane(world);
 	Mesh planeMesh(getXZPlaneVertices(20.0f), getPlaneIndices(), glm::vec4(0.8f, 0.8f, 0.8f, 1.0f));
 	GameObject planeObject(&planeMesh, glm::vec3(0.0f, 0.0f, 0.0f), &defaultPlane);
