@@ -25,12 +25,10 @@ class GameObject
 		glm::vec3 initialWorldPosition;
 		glm::quat initialWorldQuaternion;
 
-		GameObject(Mesh* myMesh, PhysicsObject* myPhysicsObject)
+		GameObject(Mesh* myMesh, PhysicsObject* myPhysicsObject, glm::vec3 offset)
 		{
 			mesh = myMesh;
-            //Legacy code - I don't want to strip the offset out yet
-            //For the purposed of this demo, we will just treat it as 0
-			position = glm::vec3(0.0f);
+			position = offset;
 			physicsObject = myPhysicsObject;
 
 			//Store the initial position in case the simulation wants to restart
