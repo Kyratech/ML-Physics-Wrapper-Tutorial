@@ -111,7 +111,6 @@ static std::vector<GLuint> GetSphereIndices(int segments, int rings)
 
 			//std::cout << "r" << j << "b" << i << ":(" << rjbiX << ","  << rjbiY << "," << rjbiZ << ")" << std::endl;
 			//Oh god, this is more code than I had hoped
-			//Yeah, but I am particularly verbose
 		}
 	}
 
