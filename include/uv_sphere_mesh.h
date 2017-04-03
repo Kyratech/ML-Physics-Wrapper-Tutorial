@@ -10,12 +10,13 @@
     Rings = number of bands of quads split by the lines of latitude
     There are (rings + 1) lines of latitude, inc the points at the top and bottom
     No generated UVs. Sorry.
+
+    NB: For the purposes of the demo, we have fixed the number of segments and rings
 */
-static std::vector<struct Vertex> GetSphereVertices(int segments, int rings, float radius)
+static std::vector<struct Vertex> GetSphereVertices(float radius)
 {
-    /* Minimum of 3 segments and 3 rings */
-    if(segments < 3) segments = 3;
-    if(rings < 3) rings = 3;
+    int segments = 12;
+	int rings = 12;
 
     std::vector<struct Vertex> vertices;
 
@@ -58,11 +59,10 @@ static std::vector<struct Vertex> GetSphereVertices(int segments, int rings, flo
     return vertices;
 }
 
-static std::vector<GLuint> GetSphereIndices(int segments, int rings)
+static std::vector<GLuint> GetSphereIndices()
 {
-	/* Minimum of 3 segments and 3 rings */
-	if (segments < 3) segments = 3;
-	if (rings < 3) rings = 3;
+	int segments = 12;
+	int rings = 12;
 
 	std::vector<GLuint> indices;
 
