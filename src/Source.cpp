@@ -31,7 +31,7 @@ int main()
 	std::vector<GameObject> physicsObjects;
 
 	//Create a unit cube directly above the origin of the world
-	PhysicsBox defaultBox(glm::vec3(5.0f, 10.0f, 0.0f), glm::vec3(0.0f), world);
+	PhysicsBox defaultBox(world);
 	Mesh boxMesh(getBoxVertices(1.0, 1.0, 1.0), getBoxIndices(), glm::vec4(1.0f, 0.3f, 0.0f, 1.0f));
 	GameObject boxObject(&boxMesh, &defaultBox, glm::vec3(0.0f));
 	physicsObjects.push_back(boxObject);
