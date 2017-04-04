@@ -72,7 +72,7 @@ int startApp()
 	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
 	//Window pointer object holds windowing data
-	window = glfwCreateWindow(WIDTH, HEIGHT, "Bullet Test Application", nullptr, nullptr);
+	window = glfwCreateWindow(WIDTH, HEIGHT, "Physics Wrapper Test Application", nullptr, nullptr);
 	//Exit if the window could not be created
 	if (window == nullptr)
 	{
